@@ -1,31 +1,35 @@
-\documentclass[acmsmall,nonacm,screen]{acmart}
+\documentclass[a4paper,UKenglish,compactauthor]{lipics-v2021}
 % Remove `screen` option for print version without link colouring
+
+
+\usepackage[numbers]{natbib}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{cleveref}
 
 % Document metadata
 \newcommand{\authorName}{Vor- und Nachname}
 \newcommand{\thesisTitle}{Titel der Arbeit}
 \newcommand{\thesisDate}{Datum}
 
-% Load package import and macro definitions files
-\input{packages.tex}
-\input{macros.tex}
 
+% Fixing lipics layout
+\nolinenumbers
+\hypersetup{hidelinks}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% ACMart setup
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The recommended style is plainurl, but that one does not
+% properly work with citet.
+\bibliographystyle{abbrvnat}
 
-% Display page numbers at top of page
-\settopmatter{printfolios=true}
+\EventTitle{Event title}
+\EventAuthors{tr-authors}
+\EventPublisher{tr-publisher}
+\EventLongTitle{tr-title}
+\EventShortTitle{BSc Thesis}
+\EventYear{tr-year}
 
-\acmBooktitle{}
-\title{\thesisTitle} % A "short title" to be used in page header can be specified in brackets: [...]
-\authorsaddresses{}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\thesisTitle}
+\titlerunning{\thesisTitle}
 
 \pagestyle{headings}
 
@@ -158,7 +162,7 @@ Write your acknowledgements here.
 %%% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cleardoublepage
-\bibliographystyle{ACM-Reference-Format}
+
 \bibliography{bibliography} % link bibliography.bib
 
 
