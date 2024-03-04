@@ -2,15 +2,19 @@ ROOT_DOC = thesis
 BIB_FILE = bibliography
 
 MODE = batchmode
+
 LATEX = pdflatex -interaction=$(MODE) -synctex=1
+LATEX_VERBOSE = pdflatex -interaction=errorstopmode -synctex=1
 BIB = bibtex
 
-.PHONY: all view clean
+.PHONY: all verbose view clean full
 
 all: $(ROOT_DOC).pdf
 
-view:
-	@xdg-open $(ROOT_DOC).pdf &
+verbose:
+	$(LATEX_VERBOSE) $(ROOT_DOC)
+
+view: @xdg-open $(ROOT_DOC).pdf &
 
 clean:
 	@find . -name "*.aux" -type f -delete
@@ -24,7 +28,6 @@ clean:
 	@find . -name "*.synctex.gz" -type f -delete
 	@echo "Cleanup complete."
 
-.PHONY: full
 full: $(ROOT_DOC).tex $(BIB_FILE).bib
 	$(LATEX) $(ROOT_DOC) ;true
 	$(BIB)   $(ROOT_DOC) ;true
