@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    % \vspace*{5cm}
+    \makeatletter
+    \begin{center}
+        \begin{LARGE}
+            Eberhard Karls Universität Tübingen
+        \end{LARGE}
+        \begin{large}
+            Mathematisch-Naturwissenschaftliche Fakultät \\
+            Wilhelm-Schickard-Institut für Informatik
+        \end{large}
+        \vfill
+        \begin{huge} 
+            Master's Thesis
+        \end{huge}
+        \\\vspace{2cm}
+        \begin{Large} \textbf{\@title} \end{Large}
+        \\\vspace{1.5cm}
+        \begin{large} \@author \end{large}
+        \\\vspace{0.5cm}
+        {\small \handindate}
+        \vfill
+        {\small \textbf{Reviewers}}
+        \\
+        %\vspace{0.25cm}
+        \large{Jun. Prof. Dr. Jonathan Brachthäuser}\\
+        \footnotesize{
+            Chair of Software Engineering \\
+            Wilhelm-Schickard-Institut für Informatik \\
+            Universität Tübingen
+        }
+        \\\vspace{0.5cm}
+        \large{Prof. Dr. Klaus Ostermann}\\
+        \footnotesize{
+            Chair of Programming Languages \\
+            Wilhelm-Schickard-Institut für Informatik \\
+            Universität Tübingen
+        }
+        % \vfill
+        % {\small \textbf{Adivsor}}
+        % \\
+        % \large{Jun. Prof. Dr. Jonathan Brachthäuser}\\
+        % \footnotesize{
+        %     Chair of Software Engineering \\
+        %     Wilhelm-Schickard-Institut für Informatik \\
+        %     Universität Tübingen
+        % }
+    \end{center}
+\end{titlepage}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title page reverso
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \thispagestyle{empty}
+% \vspace*{\fill}
+% \begin{minipage}{11.2cm}
+% \textbf{\authorName:}\\
+% \emph{\thesisTitle}\\ Master Thesis\\
+% Eberhard Karls Universität Tübingen\\
+% Thesis period: von-bis
+% \end{minipage}
+
+\makeatletter
+\vspace*{\fill}
+\begin{flushleft}
+\textbf{\@author}\\
+\matrikelnummer\\
+\emph{\@title}\\
+Master's Thesis, M.Sc. Computer Science\\
+Eberhard Karls Universität Tübingen\\
+Thesis period: \thesisperiod
+\end{flushleft}

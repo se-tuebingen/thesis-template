@@ -1,0 +1,113 @@
+\chapter{Usage}
+
+This chapter provides examples of commonly used LaTeX features, including figures, tables, code listings, TikZ graphics, and mathematical equations. These examples serve as a reference for integrating similar features into your thesis.
+
+\section{Figures}
+
+Figures are an essential part of any thesis to present visual data or diagrams. Below is an example of including a figure:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image}
+    \caption{An example image.}
+    \label{fig:example}
+\end{figure}
+
+Refer to figures in your text using \texttt{\textbackslash cref}, e.g., \cref{fig:example}.
+
+\section{Tables}
+
+Tables are used to organize and present data. Here is an example:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Column 1 & Column 2 & Column 3 \\
+        \hline
+        Data 1   & Data 2   & Data 3   \\
+        Data 4   & Data 5   & Data 6   \\
+        \hline
+    \end{tabular}
+    \caption{An example table.}
+    \label{tab:example}
+\end{table}
+
+Refer to tables in your text using \texttt{\textbackslash cref}, e.g., \cref{tab:example}.
+
+\section{Code Listings}
+
+Code listings can be included using the \texttt{listings} package. Below is an example:
+\begin{lstlisting}[language=Haskell, caption={An example Haskell code listing.}, label={lst:example}]
+sievePrime :: Int -> [Int]
+sievePrime n = 
+    [ x | x <- [2..n],
+         and [x `mod` y /= 0 | y <- [2..floor(sqrt(fromIntegral x))]]
+    ]
+\end{lstlisting}
+Refer to the listing using \texttt{\textbackslash cref}, e.g., \cref{lst:example}.
+
+\section{TikZ Graphics}
+
+TikZ allows the creation of high-quality vector graphics directly in LaTeX. Here is an example of a simple diagram:
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \graph[layered layout] {
+       "$\emptyset$" -> {"$\{a\}$", "$\{b\}$", "$\{c\}$"},
+       "$\{a\}$" -> {"$\{a, b\}$", "$\{a, c\}$"},
+       "$\{b\}$" -> {"$\{a, b\}$", "$\{b, c\}$"},
+       "$\{c\}$" -> {"$\{a, c\}$", "$\{b, c\}$"},
+       "$\{a, b\}$" -> {"$\{a, b, c\}$"},
+       "$\{a, c\}$" -> {"$\{a, b, c\}$"},
+       "$\{b, c\}$" -> {"$\{a, b, c\}$"}
+       };
+      \end{tikzpicture}
+    \caption{A simple TikZ diagram.}
+    \label{fig:tikz_example}
+\end{figure}
+
+Refer to diagrams in your text using \texttt{\textbackslash cref}, e.g., \cref{fig:tikz_example}.
+
+\section{Math Equations}
+
+Mathematical equations are formatted using the \texttt{amsmath} package. Below are examples of inline and display equations:
+
+Inline equation: $E = mc^2$.
+
+Display equation with numbers:
+\begin{equation}
+    \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0} \quad \text{(Gauss's Law)}
+    \label{eq:gauss}
+\end{equation}
+
+Refer to equations using \texttt{\textbackslash cref}, e.g., \cref{eq:gauss}.
+
+\section{Mathpartir}
+
+The \texttt{mathpartir} package is useful for typesetting inference rules. Below is an example:
+
+\begin{mathpar}
+    \inferrule*[right=Var]
+    {x : \tau \in \Gamma}
+    {\Gamma \vdash x : \tau}
+
+    \inferrule*[right=Abs]
+    {\Gamma, x : \tau_1 \vdash e : \tau_2}
+    {\Gamma \vdash \lambda x : \tau_1.\ e : \tau_1 \to \tau_2}
+
+    \inferrule*[right=App]
+    {\Gamma \vdash e_1 : \tau_1 \to \tau_2 \\
+     \Gamma \vdash e_2 : \tau_1}
+    {\Gamma \vdash e_1\ e_2 : \tau_2}
+\end{mathpar}
+
+\section{Todos}
+
+You can use \verb|\todo| for creating todo notes in your thesis\todo{example}.
+For further usage information, check the \href{https://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf}{documentation}.
+
+\section{Summary}
+
+This chapter demonstrated how to use essential LaTeX features like figures, tables, code listings, TikZ graphics, math equations, and inference rules. Refer to these examples as needed when formatting your thesis.
