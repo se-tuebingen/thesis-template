@@ -1,13 +1,5 @@
 \documentclass{mimosis}
 
-\usepackage{tcolorbox}
-\newcommand{\guide}[1]{%
-  \begin{tcolorbox}[colback=yellow!10, colframe=yellow!50!white, boxrule=3pt, sharp corners]
-    #1
-  \end{tcolorbox}
-}
-
-
 % ---
 % Fonts
 % ---
@@ -58,6 +50,8 @@
 \newtheorem{proposition}{Proposition}[chapter]
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+% for subfigures
+\usepackage{subcaption}
 
 % ---
 % Bibliography & citations
@@ -88,6 +82,11 @@
 \newcommand{\matrikelnummer}{123456}
 \newcommand{\handindate}{31. December 2099}
 \newcommand{\thesisperiod}{31. June 2099 - 31. December 2099}
+
+\newcommand{\firstReviewer}{First reviewer name}
+\newcommand{\firstReviewerAffiliation}{Wilhelm-Schickard Institut für Informatik\\Universität Tübingen}
+\newcommand{\secondReviewer}{Second reviewer name}
+\newcommand{\secondReviewerAffiliation}{Wilhelm-Schickard Institut für Informatik\\Universität Tübingen}
 
 % ---
 % Layout settings

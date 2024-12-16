@@ -1,6 +1,8 @@
 \chapter{Usage}
 
-This chapter provides examples of commonly used LaTeX features, including figures, tables, code listings, TikZ graphics, and mathematical equations. These examples serve as a reference for integrating similar features into your thesis.
+This chapter provides examples of commonly used LaTeX features, including figures, tables, code listings, TikZ graphics, and mathematical equations.
+These examples serve as a reference for integrating similar features into your thesis.
+\textit{Be sure to delete this chapter before handing in your thesis.}
 
 \section{Figures}
 
@@ -14,6 +16,32 @@ Figures are an essential part of any thesis to present visual data or diagrams. 
 \end{figure}
 
 Refer to figures in your text using \texttt{\textbackslash cref}, e.g., \cref{fig:example}.
+
+You can also have multiple subfigures in one \verb|figure|.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{example-image}
+        \caption{First subfigure.}
+        \label{fig:first}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{example-image}
+        \caption{Second subfigure.}
+        \label{fig:second}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{example-image}
+        \caption{Third subfigure.}
+        \label{fig:third}
+    \end{subfigure}
+            
+    \caption{Subreferences in \LaTeX.}
+    \label{fig:figures}
+\end{figure}
 
 \section{Tables}
 
@@ -84,9 +112,10 @@ Display equation with numbers:
 
 Refer to equations using \texttt{\textbackslash cref}, e.g., \cref{eq:gauss}.
 
-\section{Mathpartir}
+\section{Natural-deduction style judgements}
 
-The \texttt{mathpartir} package is useful for typesetting inference rules. Below is an example:
+The \texttt{mathpartir} package is useful for typesetting natural-deduction style judgements for typing rules or other inductively defined relations.
+Below is an example:
 
 \begin{mathpar}
     \inferrule*[right=Var]
@@ -103,11 +132,25 @@ The \texttt{mathpartir} package is useful for typesetting inference rules. Below
     {\Gamma \vdash e_1\ e_2 : \tau_2}
 \end{mathpar}
 
+\section{Citing}
+
+For citing other work, use the \verb|textcite| command for textual citations, like "\textcite{brachthäuserBoxing} said ..." or use \verb|parencite| for non-textual citations, like "... \parencite{brachthäuserBoxing}".
+Also check out the \href{https://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf}{cheatsheet} for other commands and settings.
+Be sure to discuss the citation style with your thesis adivsor.
+If in doubt, "author-year"/"author-date" styles are to be prefered over numerical citation styles.
+
+\section{Theorems}
+
+Use \verb|\begin{theorem}[Title]...\end{theorem}| for typesetting theorem(-like) text.
+\verb|theorem| can also be exchanged for \verb|corollary|, \verb|lemma|, \verb|definition|, \verb|example|, \verb|proposition|, \verb|conjecture| and \verb|remark|.
+\begin{theorem}[My Theorem]
+    My theorem proposition.
+\end{theorem}
+\begin{proof}
+    My proof.
+\end{proof}
+
 \section{Todos}
 
 You can use \verb|\todo| for creating todo notes in your thesis\todo{example}.
 For further usage information, check the \href{https://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf}{documentation}.
-
-\section{Summary}
-
-This chapter demonstrated how to use essential LaTeX features like figures, tables, code listings, TikZ graphics, math equations, and inference rules. Refer to these examples as needed when formatting your thesis.

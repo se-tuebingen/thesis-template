@@ -1,31 +1,18 @@
-@inproceedings{Cook1990object,
-  author          = {Cook, William R.},
-  title           = {Object-oriented programming versus abstract data types},
-  year            = {1990},
-  booktitle       = {Proceedings of the REX Workshop / School on the Foundations of Object-Oriented Languages},
-  publisher       = {Springer},
-  pages           = {151--178}
-}
-
-@inproceedings{Cook2009understanding,
-  author          = {Cook, William R.},
-  title           = {On understanding data abstraction, revisited},
-  booktitle       = {Proceedings of the Conference on Object-Oriented Programming, Systems, Languages and Applications},
-  year            = {2009},
-  pages           = {557--572},
-  address         = {New York},
-  publisher       = {ACM},
-  location        = {Orlando},
-  numpages        = {16},
-}
-
-
-@article{Cockx2020,
-  title           = {Elaborating dependent (co) pattern matching: No pattern left behind},
-  author          = {Cockx, Jesper and Abel, Andreas},
-  journal         = {Journal of Functional Programming},
-  volume          = {30},
-  year            = {2020},
-  publisher       = {Cambridge University Press},
-  DOI             = {10.1017/S0956796819000182}
+@article{brachthäuserBoxing,
+  author = {Brachth\"{a}user, Jonathan Immanuel and Schuster, Philipp and Lee, Edward and Boruch-Gruszecki, Aleksander},
+  title = {Effects, capabilities, and boxes: from scope-based reasoning to type-based reasoning and back},
+  year = {2022},
+  issue_date = {April 2022},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {6},
+  number = {OOPSLA1},
+  url = {https://doi.org/10.1145/3527320},
+  doi = {10.1145/3527320},
+  abstract = {Reasoning about the use of external resources is an important aspect of many practical applications. Effect systems enable tracking such information in types, but at the cost of complicating signatures of common functions. Capabilities coupled with escape analysis offer safety and natural signatures, but are often overly coarse grained and restrictive. We present System C, which builds on and generalizes ideas from type-based escape analysis and demonstrates that capabilities and effects can be reconciled harmoniously. By assuming that all functions are second class, we can admit natural signatures for many common programs. By introducing a notion of boxed values, we can lift the restrictions of second-class values at the cost of needing to track degree-of-impurity information in types. The system we present is expressive enough to support effect handlers in full capacity. We practically evaluate System C in an implementation and prove its soundness.},
+  journal = {Proc. ACM Program. Lang.},
+  month = apr,
+  articleno = {76},
+  numpages = {30},
+  keywords = {capabilities, effect polymorphism, effect systems, second-class values}
 }
