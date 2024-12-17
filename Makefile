@@ -1,35 +1,40 @@
-ROOT_DOC = thesis
-BIB_FILE = bibliography
+OUT_DIR := .out
+ROOT_FILE := thesis
+SOURCE_DIR := src
+BIB_FILE := bibliography
+TEX_CMD := lualatex --interaction=nonstopmode --output-directory=$(OUT_DIR)
+BIB_CMD := biber
 
-MODE = batchmode
-LATEX = pdflatex -interaction=$(MODE) -synctex=1
-BIB = bibtex
+# Default target: builds the PDF in draft mode
+.PHONY: default
+default: _init quick
 
-.PHONY: all view clean
+# Create output directories and symlink bibliography
+.PHONY: _init
+_init:
+	@mkdir -p $(OUT_DIR)
+	@mkdir -p $(OUT_DIR)/$(SOURCE_DIR)
+	@ln -fs $(shell pwd)/$(BIB_FILE).bib $(OUT_DIR)/$(BIB_FILE).bib
 
-all: $(ROOT_DOC).pdf
+# Quickly build the PDF without ensuring correct citations
+.PHONY: draft
+quick: _init
+	$(TEX_CMD) $(ROOT_FILE)
 
-view:
-	@xdg-open $(ROOT_DOC).pdf &
-
-clean:
-	@find . -name "*.aux" -type f -delete
-	@find . -name "*.log" -type f -delete
-	@find . -name "*.bbl" -type f -delete
-	@find . -name "*.blg" -type f -delete
-	@find . -name "*.bcf" -type f -delete
-	@find . -name "*.run.xml" -type f -delete
-	@find . -name "*.out" -type f -delete
-	@find . -name "*.toc" -type f -delete
-	@find . -name "*.synctex.gz" -type f -delete
-	@echo "Cleanup complete."
-
+# Full build: builds the PDF and ensures correct citations
 .PHONY: full
-full: $(ROOT_DOC).tex $(BIB_FILE).bib
-	$(LATEX) $(ROOT_DOC) ;true
-	$(BIB)   $(ROOT_DOC) ;true
-	$(LATEX) $(ROOT_DOC) ;true
-	$(LATEX) $(ROOT_DOC) ;true
+full: _init
+	$(TEX_CMD) $(ROOT_FILE); true
+	cd $(OUT_DIR) && $(BIB_CMD) $(ROOT_FILE); true
+	$(TEX_CMD) $(ROOT_FILE); true
+	$(TEX_CMD) $(ROOT_FILE)
 
-$(ROOT_DOC).pdf: $(ROOT_DOC).tex *.tex sections/** # Add further dependencies here
-	$(LATEX) $(ROOT_DOC)
+# Delete the output folder
+.PHONY: clean
+clean:
+	find $(OUT_DIR) -not -name $(ROOT_FILE).pdf -not -path $(OUT_DIR) -delete
+
+# Watch for changes and rebuild the PDF in quick mode
+.PHONY: watch
+watch:
+	watchexec -w $(SOURCE_DIR) -w $(ROOT_FILE).tex "make draft"
