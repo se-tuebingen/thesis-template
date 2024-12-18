@@ -1,40 +1,25 @@
-OUT_DIR := .out
-ROOT_FILE := thesis
-SOURCE_DIR := src
-BIB_FILE := bibliography
-TEX_CMD := lualatex --interaction=nonstopmode --output-directory=$(OUT_DIR)
-BIB_CMD := biber
+ROOT_FILE := thesis.tex
+TEX_CMD := latexmk -lualatex -interaction=nonstopmode -f
 
-# Default target: builds the PDF in draft mode
 .PHONY: default
-default: _init quick
-
-# Create output directories and symlink bibliography
-.PHONY: _init
-_init:
-	@mkdir -p $(OUT_DIR)
-	@mkdir -p $(OUT_DIR)/$(SOURCE_DIR)
-	@ln -fs $(shell pwd)/$(BIB_FILE).bib $(OUT_DIR)/$(BIB_FILE).bib
-
-# Quickly build the PDF without ensuring correct citations
-.PHONY: draft
-quick: _init
-	$(TEX_CMD) $(ROOT_FILE)
+default: pdf clean
 
 # Full build: builds the PDF and ensures correct citations
-.PHONY: full
-full: _init
-	$(TEX_CMD) $(ROOT_FILE); true
-	cd $(OUT_DIR) && $(BIB_CMD) $(ROOT_FILE); true
-	$(TEX_CMD) $(ROOT_FILE); true
+.PHONY: pdf
+pdf:
 	$(TEX_CMD) $(ROOT_FILE)
 
-# Delete the output folder
+# delete all output files but not the PDF
 .PHONY: clean
 clean:
-	find $(OUT_DIR) -not -name $(ROOT_FILE).pdf -not -path $(OUT_DIR) -delete
+	$(TEX_CMD) -c
 
-# Watch for changes and rebuild the PDF in quick mode
+# delete all output files including the PDF
+.PHONY: full-clean
+full-clean:
+	$(TEX_CMD) -C
+
+# Rebuild the PDF on changes in the source files
 .PHONY: watch
 watch:
-	watchexec -w $(SOURCE_DIR) -w $(ROOT_FILE).tex "make draft"
+	$(TEX_CMD) -pvc $(ROOT_FILE)
