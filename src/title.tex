@@ -14,8 +14,8 @@
             Wilhelm-Schickard-Institut für Informatik
         \end{large}
         \vfill
-        \begin{huge} 
-            Master's Thesis
+        \begin{huge}
+            \thesistype
         \end{huge}
         \\\vspace{2cm}
         \begin{Large} \textbf{\@title} \end{Large}
@@ -26,12 +26,20 @@
         \vfill
         {\small \textbf{Reviewers}}
         \\
-        %\vspace{0.25cm}
-        \large{\firstReviewer}\\
-        \footnotesize{\firstReviewerAffiliation}
-        \\\vspace{0.5cm}
-        \large{\secondReviewer}\\
-        \footnotesize{\secondReviewerAffiliation}
+        \vspace{0.5cm}
+        \ifx\secondReviewerName\nil
+            \begin{tabular}{c}
+                {\large \firstReviewerName{}} \\
+                {\footnotesize \firstReviewerDepartment{}} \\
+                {\footnotesize \firstReviewerUniversity{}}
+            \end{tabular}
+       \else
+            \begin{tabular}{c@{\hspace{2cm}}c}
+                {\large \firstReviewerName{}} & {\large \secondReviewerName{}} \\
+                {\footnotesize \firstReviewerDepartment{}} & {\footnotesize \secondReviewerDepartment{}} \\
+                {\footnotesize \firstReviewerUniversity{}} & {\footnotesize \secondReviewerUniversity{}}
+            \end{tabular}
+       \fi
     \end{center}
 \end{titlepage}
 
@@ -46,7 +54,7 @@
 \textbf{\@author}\\
 \matrikelnummer\\
 \emph{\@title}\\
-Master's Thesis, M.Sc. Computer Science\\
-Eberhard Karls Universität Tübingen\\
+\thesistype, \program\\
+Universität Tübingen\\
 Thesis period: \thesisperiod
 \end{flushleft}
