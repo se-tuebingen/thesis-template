@@ -1,162 +1,105 @@
-\documentclass{mimosis}
+\documentclass[12pt,a4paper,twoside,openright]{report}
+\let\openright=\cleardoublepage
 
-% ---
-% Fonts
-% ---
+% Go here and change your thesis metadata!
+\input{metadata}
 
-\setmainfont{EB Garamond}
-% \setsansfont{Garamond Math}
-\setsansfont{Libertinus Math}
-\setmonofont[Scale=MatchLowercase, Contextuals=Alternate]{Fira Code}
-% this changes the section style of \section, \subsection, etc.
-\setkomafont{sectioning}{\normalfont\scshape}
-% \setkomafont{sectioning}{\normalfont\bfseries}
+\usepackage[ngerman,english,shorthands=off]{babel}
 
+%%% Font
+\usepackage{lmodern}
+\usepackage[mono=false]{libertinus}
+% If you want the "classic" LaTeX feel, simply comment out the line above.
 
-% ---
-% Packages
-% ---
-
-% for natural-deduction style proofs
-\usepackage{mathpartir}
-% this is only for filling the spaces in this template. Delete this once you start working on your thesis
-\usepackage{lipsum}
-% code listings
-\usepackage{listings}
-\usepackage{lstfiracode}
-\lstset{
-  style=FiraCodeStyle,
-  basicstyle=\ttfamily,
-  mathescape=true,
-  keepspaces=true
-}
-% drawing
-\usepackage{tikz}
-\usetikzlibrary{graphs}
-\usetikzlibrary{graphs, graphdrawing}
-\usegdlibrary{trees}
-\usetikzlibrary{positioning}
-\usegdlibrary{layered}
-% commands for marking todos
-\usepackage{todonotes}
-% theorems
-\theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{conjecture}{Conjecture}[chapter]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{example}{Example}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-% for subfigures
-\usepackage{subcaption}
+%%% Packages
+% Useful "basic" packages
+\usepackage{microtype}
+\usepackage{amsmath,amsfonts,amsthm,bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{floatrow}
 \usepackage{array}
+\usepackage{hyperref}
 
-% ---
-% Bibliography & citations
-% ---
+%%% Bibliography
+\usepackage[natbib,style=numeric,sorting=none]{biblatex}
+% Alternative with alphanumeric citations:
+%\usepackage[natbib,style=alphabetic]{biblatex}
+% Alternatives that conform to ISO690:
+%\usepackage[natbib,style=iso-numeric,sorting=none]{biblatex}
+%\usepackage[natbib,style=iso-alphabetic]{biblatex}
 
-\usepackage[
-  % colorlinks=true,
-  citecolor=RoyalBlue,
-  % linkcolor=RoyalBlue,
-  urlcolor=RoyalBlue,
-  unicode
-]{hyperref}
-\usepackage{cleveref}
-\usepackage[
-  backend=biber,
-  style=authoryear,
-  hyperref=true,
-  url=true
-]{biblatex}
+% Load bibliography entries
 \addbibresource{bibliography.bib}
 
-% ---
-% Incipit -- CHANGE THESE YOURSELF
-% ---
+% TikZ (feel free to remove this if you don't need it)
+\usepackage{tikz}
+\usetikzlibrary{graphs,positioning} % add tikz libraries as needed
 
-\title{Title of your Thesis}
-\author{Your name}
-\newcommand{\matrikelnummer}{123456}
-\newcommand{\handindate}{31. December 2099}
-\newcommand{\thesisperiod}{31. June 2099 - 31. December 2099}
-\newcommand{\thesistype}{Master's Thesis}
-\newcommand{\program}{M.Sc. Computer Science}
+% Verbatim environments (feel free to remove this if you don't need it)
+\usepackage{fancyvrb}
 
-\newcommand{\nil}{}
-\newcommand{\firstReviewerName}{Fist reviewer name}
-\newcommand{\firstReviewerDepartment}{Wilhelm-Schickard Institut für Informatik}
-\newcommand{\firstReviewerUniversity}{Universität Tübingen}
-% If you are writing a bachelor's thesis, be sure to clear name of the second reviewer
-% \newcommand{\secondReviewerName}{}
-\newcommand{\secondReviewerName}{Second reviewer name}
-\newcommand{\secondReviewerDepartment}{Wilhelm-Schickard Institut für Informatik}
-\newcommand{\secondReviewerUniversity}{Universität Tübingen}
+% Pseudocode (feel free to remove this if you don't need it)
+\usepackage{algpseudocode}
+\usepackage{algorithm}
 
-% ---
-% Layout settings
-% ---
+% Source code (feel free to remove this if you don't need it)
+\usepackage{listings}
 
-% https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX#The_fundamentals:_parameter_commands_and_examples
-\setlength{\parskip}{0ex plus 1ex minus 1ex}
-\setlength{\parindent}{15pt}
-% allow latex to leave blank space at the bottom of the page.
-% Otherwise, "rubber" space will be inserted in between paragraphs.
-% The opposite command is \flushbottom. 
-% Then, space is inserted such that the last line always appears at the same height on every page.
-\raggedbottom
+% Type rules (feel free to remove this if you don't need it)
+\usepackage{mathpartir}
 
-\input{macros.tex}
+% Set up PDF details
+\hypersetup{pdftitle={\ThesisTitlePDF}}
+\hypersetup{pdfauthor={\ThesisAuthorPDF}}
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+
+\usepackage[noabbrev]{cleveref}
+
+\input{todos} % remove this before compiling the final version!
+\input{macros} % use this file for various custom definitions
 
 \begin{document}
 
-\frontmatter
+\include{title}
 
-  \include{src/title}
-  % ensure title pages do not advance the pager counter
-  \setcounter{page}{1}
-  \include{src/abstract}
+\include{intro}
 
-  \tableofcontents
+\include{ch1}
+\include{ch2}
+\include{ch3}
 
-\mainmatter
+\include{conclusion}
+\include{bibliography}
 
-  % delete me
-  \include{usage}
+\appendix
+\include{howto}
 
-  \include{src/introduction}
-  \include{src/overview}
-  \include{src/idea}
-  \include{src/evaluation}
-  \include{src/discussion}
-  \include{src/related_work}
-  \include{src/conclusion}
+\openright
 
-\backmatter
-  \printbibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Selbständigkeitserklärung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\begin{otherlanguage}{ngerman}
+\section*{Selbständigkeitserklärung}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%% Selbständigkeitserklärung
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \thispagestyle{empty}
-  \begin{otherlanguage}{ngerman}
-  \chapter*{Selbständigkeitserklärung}
-  Hiermit erkläre ich, dass ich diese schriftliche Abschlussarbeit selbständig verfasst habe, keine
-  anderen als die angegebenen Hilfsmittel und Quellen benutzt habe und alle wörtlich oder
-  sinngemäß aus anderen Werken übernommenen Aussagen als solche gekennzeichnet habe.
-  
-  \vspace{1cm} 
-  \noindent
-  \hrulefill \hspace{2.5cm} \hrulefill
-  
-  \noindent
-  Ort, Datum \hfill Unterschrift
-  \end{otherlanguage}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%% Ende
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Hiermit versichere ich, dass ich die vorliegende \ThesisTypeGerman{}
+selbständig und nur mit den angegebenen Hilfsmitteln angefertigt habe und dass alle Stellen, die dem Wortlaut oder dem
+Sinne nach anderen Werken entnommen sind, durch Angaben von Quellen als
+Entlehnung kenntlich gemacht worden sind.
+Diese \ThesisTypeGerman{} wurde in gleicher oder ähnlicher Form in keinem anderen
+Studiengang als Prüfungsleistung vorgelegt.
+
+\vspace{1cm}
+\noindent
+\hrulefill \hspace{2.5cm} \hrulefill
+
+\noindent
+Ort, Datum \hfill Unterschrift
+\end{otherlanguage}
 
 \end{document}

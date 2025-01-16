@@ -17,32 +17,6 @@ Figures are an essential part of any thesis to present visual data or diagrams. 
 
 Refer to figures in your text using \texttt{\textbackslash cref}, e.g., \cref{fig:example}.
 
-You can also have multiple subfigures in one \verb|figure|.
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}{0.3\textwidth}
-        \includegraphics[width=\textwidth]{example-image}
-        \caption{First subfigure.}
-        \label{fig:first}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \includegraphics[width=\textwidth]{example-image}
-        \caption{Second subfigure.}
-        \label{fig:second}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \includegraphics[width=\textwidth]{example-image}
-        \caption{Third subfigure.}
-        \label{fig:third}
-    \end{subfigure}
-            
-    \caption{Subreferences in \LaTeX.}
-    \label{fig:figures}
-\end{figure}
-
 \section{Tables}
 
 Tables are used to organize and present data. Here is an example:
@@ -78,25 +52,6 @@ Refer to the listing using \texttt{\textbackslash cref}, e.g., \cref{lst:example
 \section{TikZ Graphics}
 
 TikZ allows the creation of high-quality vector graphics directly in LaTeX. Here is an example of a simple diagram:
-
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        \graph[layered layout] {
-       "$\emptyset$" -> {"$\{a\}$", "$\{b\}$", "$\{c\}$"},
-       "$\{a\}$" -> {"$\{a, b\}$", "$\{a, c\}$"},
-       "$\{b\}$" -> {"$\{a, b\}$", "$\{b, c\}$"},
-       "$\{c\}$" -> {"$\{a, c\}$", "$\{b, c\}$"},
-       "$\{a, b\}$" -> {"$\{a, b, c\}$"},
-       "$\{a, c\}$" -> {"$\{a, b, c\}$"},
-       "$\{b, c\}$" -> {"$\{a, b, c\}$"}
-       };
-      \end{tikzpicture}
-    \caption{A simple TikZ diagram.}
-    \label{fig:tikz_example}
-\end{figure}
-
-Refer to diagrams in your text using \texttt{\textbackslash cref}, e.g., \cref{fig:tikz_example}.
 
 \section{Math Equations}
 
