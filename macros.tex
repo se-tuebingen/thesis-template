@@ -48,5 +48,21 @@
   stringstyle=\color{red!50!black},
   keywordstyle=\color{blue!75!black}}
 
+% Here's how you define a custom language, Effekt is used here as an example
+\lstdefinelanguage{Effekt}{
+  morekeywords={%
+    let,true,false,val,var,if,else,while,type,effect,interface,%
+    try,with,case,do,fun,match,def,module,import,export,extern,%
+    include,record,box,unbox,return,region,resource,%
+    new,and,is,namespace,pure},
+  otherkeywords={=>},
+  alsoletter={?,!},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]"""
+}[keywords,comments,strings]
 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
