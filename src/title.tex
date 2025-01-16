@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    % \vspace*{5cm}
+    \makeatletter
+    \begin{center}
+        \begin{LARGE}
+            Eberhard Karls Universität Tübingen
+        \end{LARGE}
+        \begin{large}
+            Mathematisch-Naturwissenschaftliche Fakultät \\
+            Wilhelm-Schickard-Institut für Informatik
+        \end{large}
+        \vfill
+        \begin{huge}
+            \thesistype
+        \end{huge}
+        \\\vspace{2cm}
+        \begin{Large} \textbf{\@title} \end{Large}
+        \\\vspace{1.5cm}
+        \begin{large} \@author \end{large}
+        \\\vspace{0.5cm}
+        {\small \handindate}
+        \vfill
+        {\small \textbf{Reviewers}}
+        \\
+        \vspace{0.5cm}
+        \ifx\secondReviewerName\nil
+            \begin{tabular}{c}
+                {\large \firstReviewerName{}} \\
+                {\footnotesize \firstReviewerDepartment{}} \\
+                {\footnotesize \firstReviewerUniversity{}}
+            \end{tabular}
+       \else
+            \begin{tabular}{c@{\hspace{2cm}}c}
+                {\large \firstReviewerName{}} & {\large \secondReviewerName{}} \\
+                {\footnotesize \firstReviewerDepartment{}} & {\footnotesize \secondReviewerDepartment{}} \\
+                {\footnotesize \firstReviewerUniversity{}} & {\footnotesize \secondReviewerUniversity{}}
+            \end{tabular}
+       \fi
+    \end{center}
+\end{titlepage}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title page reverso
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\vspace*{\fill}
+\begin{flushleft}
+\textbf{\@author}\\
+\matrikelnummer\\
+\emph{\@title}\\
+\thesistype, \program\\
+Universität Tübingen\\
+Thesis period: \thesisperiod
+\end{flushleft}

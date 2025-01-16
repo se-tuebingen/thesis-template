@@ -1,35 +1,25 @@
-ROOT_DOC = thesis
-BIB_FILE = bibliography
+ROOT_FILE := thesis.tex
+TEX_CMD := latexmk -lualatex -interaction=nonstopmode -f
 
-MODE = batchmode
-LATEX = pdflatex -interaction=$(MODE) -synctex=1
-BIB = bibtex
+.PHONY: default
+default: pdf clean
 
-.PHONY: all view clean
+# Full build: builds the PDF and ensures correct citations
+.PHONY: pdf
+pdf:
+	$(TEX_CMD) $(ROOT_FILE)
 
-all: $(ROOT_DOC).pdf
-
-view:
-	@xdg-open $(ROOT_DOC).pdf &
-
+# delete all output files but not the PDF
+.PHONY: clean
 clean:
-	@find . -name "*.aux" -type f -delete
-	@find . -name "*.log" -type f -delete
-	@find . -name "*.bbl" -type f -delete
-	@find . -name "*.blg" -type f -delete
-	@find . -name "*.bcf" -type f -delete
-	@find . -name "*.run.xml" -type f -delete
-	@find . -name "*.out" -type f -delete
-	@find . -name "*.toc" -type f -delete
-	@find . -name "*.synctex.gz" -type f -delete
-	@echo "Cleanup complete."
+	$(TEX_CMD) -c
 
-.PHONY: full
-full: $(ROOT_DOC).tex $(BIB_FILE).bib
-	$(LATEX) $(ROOT_DOC) ;true
-	$(BIB)   $(ROOT_DOC) ;true
-	$(LATEX) $(ROOT_DOC) ;true
-	$(LATEX) $(ROOT_DOC) ;true
+# delete all output files including the PDF
+.PHONY: full-clean
+full-clean:
+	$(TEX_CMD) -C
 
-$(ROOT_DOC).pdf: $(ROOT_DOC).tex *.tex sections/** # Add further dependencies here
-	$(LATEX) $(ROOT_DOC)
+# Rebuild the PDF on changes in the source files
+.PHONY: watch
+watch:
+	$(TEX_CMD) -pvc $(ROOT_FILE)

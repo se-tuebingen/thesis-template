@@ -1,190 +1,162 @@
-\documentclass[a4paper,UKenglish,compactauthor]{lipics-v2021}
-% Remove `screen` option for print version without link colouring
+\documentclass{mimosis}
+
+% ---
+% Fonts
+% ---
+
+\setmainfont{EB Garamond}
+% \setsansfont{Garamond Math}
+\setsansfont{Libertinus Math}
+\setmonofont[Scale=MatchLowercase, Contextuals=Alternate]{Fira Code}
+% this changes the section style of \section, \subsection, etc.
+\setkomafont{sectioning}{\normalfont\scshape}
+% \setkomafont{sectioning}{\normalfont\bfseries}
 
 
-\usepackage[numbers]{natbib}
-\usepackage{microtype}
-\usepackage{amsmath}
+% ---
+% Packages
+% ---
+
+% for natural-deduction style proofs
+\usepackage{mathpartir}
+% this is only for filling the spaces in this template. Delete this once you start working on your thesis
+\usepackage{lipsum}
+% code listings
+\usepackage{listings}
+\usepackage{lstfiracode}
+\lstset{
+  style=FiraCodeStyle,
+  basicstyle=\ttfamily,
+  mathescape=true,
+  keepspaces=true
+}
+% drawing
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usetikzlibrary{graphs, graphdrawing}
+\usegdlibrary{trees}
+\usetikzlibrary{positioning}
+\usegdlibrary{layered}
+% commands for marking todos
+\usepackage{todonotes}
+% theorems
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+% for subfigures
+\usepackage{subcaption}
+\usepackage{array}
+
+% ---
+% Bibliography & citations
+% ---
+
+\usepackage[
+  % colorlinks=true,
+  citecolor=RoyalBlue,
+  % linkcolor=RoyalBlue,
+  urlcolor=RoyalBlue,
+  unicode
+]{hyperref}
 \usepackage{cleveref}
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  hyperref=true,
+  url=true
+]{biblatex}
+\addbibresource{bibliography.bib}
 
-% Document metadata
-\newcommand{\authorName}{Vor- und Nachname}
-\newcommand{\thesisTitle}{Titel der Arbeit}
-\newcommand{\thesisDate}{Datum}
+% ---
+% Incipit -- CHANGE THESE YOURSELF
+% ---
 
+\title{Title of your Thesis}
+\author{Your name}
+\newcommand{\matrikelnummer}{123456}
+\newcommand{\handindate}{31. December 2099}
+\newcommand{\thesisperiod}{31. June 2099 - 31. December 2099}
+\newcommand{\thesistype}{Master's Thesis}
+\newcommand{\program}{M.Sc. Computer Science}
 
-% Fixing lipics layout
-\nolinenumbers
-\hypersetup{hidelinks}
+\newcommand{\nil}{}
+\newcommand{\firstReviewerName}{Fist reviewer name}
+\newcommand{\firstReviewerDepartment}{Wilhelm-Schickard Institut für Informatik}
+\newcommand{\firstReviewerUniversity}{Universität Tübingen}
+% If you are writing a bachelor's thesis, be sure to clear name of the second reviewer
+% \newcommand{\secondReviewerName}{}
+\newcommand{\secondReviewerName}{Second reviewer name}
+\newcommand{\secondReviewerDepartment}{Wilhelm-Schickard Institut für Informatik}
+\newcommand{\secondReviewerUniversity}{Universität Tübingen}
 
-% The recommended style is plainurl, but that one does not
-% properly work with citet.
-\bibliographystyle{abbrvnat}
+% ---
+% Layout settings
+% ---
 
-\EventTitle{Event title}
-\EventAuthors{tr-authors}
-\EventPublisher{tr-publisher}
-\EventLongTitle{tr-title}
-\EventShortTitle{BSc Thesis}
-\EventYear{tr-year}
+% https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX#The_fundamentals:_parameter_commands_and_examples
+\setlength{\parskip}{0ex plus 1ex minus 1ex}
+\setlength{\parindent}{15pt}
+% allow latex to leave blank space at the bottom of the page.
+% Otherwise, "rubber" space will be inserted in between paragraphs.
+% The opposite command is \flushbottom. 
+% Then, space is inserted such that the last line always appears at the same height on every page.
+\raggedbottom
 
-\title{\thesisTitle}
-\titlerunning{\thesisTitle}
-
-\pagestyle{headings}
-
+\input{macros.tex}
 
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Title page
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{titlepage}
- \begin{center}
-  {\LARGE Eberhard Karls Universität Tübingen}\\
-  {\large Mathematisch-Naturwissenschaftliche Fakultät \\
-Wilhelm-Schickard-Institut für Informatik\\[4cm]}
-  {\huge Master Thesis\\[2cm]}
-  {\Large\bf  \thesisTitle\\[1.5cm]}
- {\large \authorName}\\[0.5cm]
-\thesisDate\\[4cm]
-{\small\bf Reviewers}\\[0.5cm]
-  \parbox{7cm}%
-  {\begin{center}{\large Name Erstgutachter}\\
-    {\footnotesize Wilhelm-Schickard-Institut für Informatik\\
-	  Universität Tübingen\vspace{0.4cm}}\end{center}}\hfill\parbox{7cm}%
-  {\begin{center}
-    {\large Name Zweitgutachter}\\
-    {\footnotesize Wilhelm-Schickard-Institut für Informatik\\
-	  Universität Tübingen}\end{center}
-  }
-  \end{center}
-\end{titlepage}
+\frontmatter
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Title page reverso
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \include{src/title}
+  % ensure title pages do not advance the pager counter
+  \setcounter{page}{1}
+  \include{src/abstract}
 
-\thispagestyle{empty}
-\vspace*{\fill}
-\begin{minipage}{11.2cm}
-\textbf{\authorName:}\\
-\emph{\thesisTitle}\\ Master Thesis\\
-Eberhard Karls Universität Tübingen\\
-Thesis period: von-bis
-\end{minipage}
-\newpage
+  \tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
 
-\pagenumbering{roman}
-\setcounter{page}{1}
+  % delete me
+  \include{usage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Abstract / Zusammenfassung
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \include{src/introduction}
+  \include{src/overview}
+  \include{src/idea}
+  \include{src/evaluation}
+  \include{src/discussion}
+  \include{src/related_work}
+  \include{src/conclusion}
 
-% The abstract is a short summary of the work to be presented in the thesis
-\section*{Abstract}
-\input{sections/abstract.tex}
-\newpage
+\backmatter
+  \printbibliography
 
-\section*{Zusammenfassung}
-
-Bei einer englischen Masterarbeit muss zus\"atzlich eine deutsche Zusammenfassung verfasst werden.
-
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Acknowledgements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Acknowledgements}
-
-Write your acknowledgements here.
-
-\cleardoublepage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Table of Contents
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \renewcommand{\baselinestretch}{1.3}
-
-\small\normalsize
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} % Moronic hack to remove "contents" entry from TOC
-\tableofcontents
-\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
-
-
-% \renewcommand{\baselinestretch}{1}
-\small\normalsize
-
-\cleardoublepage
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Der Haupttext, ab hier mit arabischer Numerierung
-%%% Mit \input{dateiname} werden die Datei `dateiname' eingebunden
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagenumbering{arabic}
-\setcounter{page}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Introduction
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-\label{sec:introduction}
-\input{sections/intro.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Main Ideas
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Main Ideas}
-\label{sec:mainideas}
-\input{sections/main-ideas.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Technical Meat
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Technical Meat}
-\label{sec:technical-meat}
-\input{sections/technical-meat.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Discussion and Outlook
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion and Outlook}
-\label{sec:discussion}
-\input{sections/discussion.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cleardoublepage
-
-\bibliography{bibliography} % link bibliography.bib
-
-
-\cleardoublepage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Selbständigkeitserklärung
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thispagestyle{empty}
-\section*{Selbständigkeitserklärung}
-
-Hiermit versichere ich, dass ich die vorliegende Masterarbeit
-selbständig und nur mit den angegebenen Hilfsmitteln angefertigt habe und dass alle Stellen, die dem Wortlaut oder dem
-Sinne nach anderen Werken entnommen sind, durch Angaben von Quellen als
-Entlehnung kenntlich gemacht worden sind.
-Diese Masterarbeit wurde in gleicher oder ähnlicher Form in keinem anderen
-Studiengang als Prüfungsleistung vorgelegt.
-
-\vskip 3cm
-
-Ort, Datum	\hfill Unterschrift \hfill
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Ende
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%% Selbständigkeitserklärung
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \thispagestyle{empty}
+  \begin{otherlanguage}{ngerman}
+  \chapter*{Selbständigkeitserklärung}
+  Hiermit erkläre ich, dass ich diese schriftliche Abschlussarbeit selbständig verfasst habe, keine
+  anderen als die angegebenen Hilfsmittel und Quellen benutzt habe und alle wörtlich oder
+  sinngemäß aus anderen Werken übernommenen Aussagen als solche gekennzeichnet habe.
+  
+  \vspace{1cm} 
+  \noindent
+  \hrulefill \hspace{2.5cm} \hrulefill
+  
+  \noindent
+  Ort, Datum \hfill Unterschrift
+  \end{otherlanguage}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%% Ende
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
