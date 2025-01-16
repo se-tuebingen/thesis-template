@@ -2,7 +2,9 @@
 
 After the reader gained sufficient knowledge to understand your problem in \cref{chap:refs}, you can jump to your own advanced material and conclusions.
 
-You will need definitions (see \cref{defn:x} below in \cref{sec:demo}), theorems (\cref{thm:y}), general mathematics, algorithms (\cref{alg:w}), and tables (\cref{tab:z})\todo{See documentation of package \texttt{booktabs} for hints on typesetting tables. As a main rule, \emph{never} draw a vertical line.}. \Cref{fig:f,fig:g} show how to make a nice figure. See \cref{fig:schema} for an example of TikZ-based diagram, \cref{lst:break} for an example of a code listing, and \cref{fig:typerule} for an example of a natural-deduction style judgment for typing rules. Cross-referencing helps to keep the necessary parts of the narrative close --- use references to the previous chapter with theory wherever it seems that the reader could have forgotten the required context. Conversely, it is useful to add a few references to theoretical chapters that point to the sections which use the developed theory, giving the reader easy access to motivating application examples.
+You will need definitions (see \cref{defn:x} below in \cref{sec:demo}), theorems (\cref{thm:y}), general mathematics, algorithms (\cref{alg:w}), and tables (\cref{tab:z})\todo{See documentation of package \texttt{booktabs} for hints on typesetting tables. As a main rule, \emph{never} draw a vertical line.}. \Cref{fig:f,fig:g} show how to make a nice figure. See \cref{fig:schema} for an example of TikZ-based diagram, \cref{lst:break} for an example of a code listing, and \cref{fig:typerule} for an example of a natural-deduction style judgment for typing rules.
+
+Use the \verb|\cref| command to typeset a reference. Cross-referencing helps to keep the necessary parts of the narrative close --- use references to the previous chapter with theory wherever it seems that the reader could have forgotten the required context. Conversely, it is useful to add a few references to theoretical chapters that point to the sections which use the developed theory, giving the reader easy access to motivating application examples.
 
 \section{Example with some mathematics}
 \label{sec:demo}
@@ -11,7 +13,7 @@ You will need definitions (see \cref{defn:x} below in \cref{sec:demo}), theorems
 Given stuff $X$, $Y$ and $Z$, we will write a \emph{triplet} of the stuff as $(X,Y,Z)$.
 \end{definition}
 
-\newcommand{\Col}{\textsc{Colour}}
+\newcommand{\Col}{\operatorname{Colour}}
 
 \begin{theorem}[Car coloring]\label{thm:y}
 All cars have the same color. More specifically, for any set of cars $C$, we have
