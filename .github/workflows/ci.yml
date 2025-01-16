@@ -12,13 +12,12 @@ jobs:
   build:
     name: Build thesis PDF
     runs-on: ubuntu-latest
+    container: { image: 'aergus/latex' }
 
     steps:
       - uses: actions/checkout@v4
       - name: Build the thesis
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: thesis.tex
+        run: latexmk thesis
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
