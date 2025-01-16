@@ -1,16 +1,36 @@
 # Thesis Template
-This repository includes a template for your bachelor's or master's thesis.
-You may use the the command runner tool [`just`](https://github.com/casey/just) ([justfile](/justfile)) for easily building the PDF.
-The build process assumes that you already have a functioning LaTeX toolchain with `lualatex` installed.
-The file `thesis.tex` is the main file and includes each chapter as a separate file located in the [src](/src/) folder.
 
-# Tips
+This repository includes a template for your thesis.
 
-- Use `git` for organising your thesis files. This allows you to easily revert changes and backup your files to Github.
-- For ensuring your `.tex` source files remain readable, we adivse you to put every sentence on a separate line.
+## Getting started
 
-# Disclaimer
+1. Click on the "Use this template" button in GitHub and make a new private repository for your thesis.
+2. Clone your new repository with `git`.
+3. Run `make` to check that everything works. The resulting thesis file should be in `thesis.pdf`
+4. Fill in the blanks in `metadata.tex`.
+5. Read through the example code, then erase it.
+6. Write your thesis.
+7. Remove the `todos.tex` file.
+8. Submit and defend the thesis!
+
+### Installing LaTeX
+
+Be sure to install a LaTeX toolchain with `lualatex` support.
+
+- On a unix-style system, use TeXLive, your package manager has something like `texlive-full` or `texlive-scheme-full`.
+- On Windows, use [MiKTeX](https://www.tug.org/texlive/windows.html).
+
+#### Editor support
+
+If you want to have a Overleaf-like experience locally, we recommend using VSCode with the `james-yu.latex-workshop` package.
+
+## Disclaimer
 
 This template provides a basic thesis structure and a brief description of what to put in each chapter.
 While this is a good starting point, we offer no guarantee that this structure is appropiate for your particular thesis or covers all requirements for a good grade.
-It is your responsibility to appropiately adjust this template to fit your needs and requirements.
+It is _your_ responsibility to appropiately adjust this template to fit your needs and requirements.
+
+## License
+
+Most of the default text and the overall structure is based on <https://github.com/exaexa/better-mff-thesis>,
+which is available in the public domain. Thanks!

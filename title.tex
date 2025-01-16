@@ -1,0 +1,73 @@
+% DO NOT CHANGE THIS DIRECTLY.
+%
+% => Change the data in `metadata.tex` instead.
+%
+% DO NOT CHANGE THIS DIRECTLY.
+
+\pagestyle{empty}
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+ \begin{center}
+  {\LARGE Eberhard Karls Universität Tübingen}\\
+  {\large Mathematisch-Naturwissenschaftliche Fakultät \\
+Wilhelm-Schickard-Institut für Informatik\\[4cm]}
+  {\huge \ThesisTypeTitle\\[2cm]}
+  {\Large\bf  \ThesisTitle\\[1.5cm]}
+  {\large \ThesisAuthor}\\[0.5cm]
+  \ThesisSubmissionDate\\[4cm]
+
+  \ifx\SecondReviewerName\empty
+    {\small\bf Reviewer}\\[1.0cm] % Note: is 0.5cm in the "original" template!
+    \begin{tabular}{@{}c@{}@{}}
+      {\large \FirstReviewerName{}} \\
+      {\footnotesize \FirstReviewerDepartment{}} \\
+      {\footnotesize \FirstReviewerUniversity{}}
+    \end{tabular}
+  \else
+    {\small\bf Reviewers}\\[1.0cm] % Note: is 0.5cm in the "original" template!
+    \begin{tabular}{@{}P{6.5cm}@{\hspace{0.5cm}}P{6.5cm}@{}}
+      {\large \FirstReviewerName{}} & {\large \SecondReviewerName{}} \\
+      {\footnotesize \FirstReviewerDepartment{}} & {\footnotesize \SecondReviewerDepartment{}} \\
+      {\footnotesize \FirstReviewerUniversity{}} & {\footnotesize \SecondReviewerUniversity{}}
+    \end{tabular}
+  \fi
+ \end{center}
+\end{titlepage}
+
+\vspace*{\fill}
+\begin{minipage}{11.2cm}
+\textbf{\ThesisAuthor:}\\
+\ThesisStudentID\\
+\emph{\ThesisTitle}\\
+\ThesisTypeTitle\\
+Eberhard Karls Universität Tübingen\\
+Thesis period: \ThesisPeriod
+\end{minipage}
+\newpage
+
+\hypersetup{pageanchor=true}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\section*{Abstract}
+\ThesisAbstract
+\newpage
+
+\section*{Zusammenfassung}
+\begin{otherlanguage}{ngerman}
+\ThesisSummaryDE
+\end{otherlanguage}
+\newpage
+
+\section*{Acknowledgements}
+\Acknowledgements
+\newpage
+
+\cleardoublepage
+
+\tableofcontents
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}

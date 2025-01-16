@@ -1,2 +1,52 @@
-% Use this file for your macro definitions
-% \newcommand{...}{...}
+% use this for typesetting a chapter without a number, e.g. intro and outro
+\def\chapwithtoc#1{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+
+% If there is a line/figure overflowing into page margin, this will make the
+% problem evident by drawing a thick black line at the overflowing spot. You
+% should not disable this.
+\overfullrule=3mm
+
+% The maximum stretching of a space. Increasing this makes the text a bit more
+% sloppy, but may prevent the overflows by moving words to next line.
+\emergencystretch=1em
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{corrolary}{Corollary}
+
+% real/natural numbers
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+% asymptotic complexity
+\newcommand{\asy}[1]{\mathcal{O}(#1)}
+
+% listings and default lstlisting config (remove if unused)
+\DeclareNewFloatType{listing}{}
+\floatsetup[listing]{style=ruled}
+
+\DeclareCaptionStyle{thesis}{style=base,font={small,sf},labelfont=bf,labelsep=quad}
+\captionsetup{style=thesis}
+\captionsetup[algorithm]{style=thesis,singlelinecheck=off}
+\captionsetup[listing]{style=thesis,singlelinecheck=off}
+
+% Customization of algorithmic environment (comment style)
+\renewcommand{\algorithmiccomment}[1]{\textcolor{black!25}{\dotfill\sffamily\itshape#1}}
+
+\floatname{listing}{Listing}
+\lstset{ % use this to define styling for any other language
+  language=C++,
+  tabsize=2,
+  showstringspaces=false,
+  basicstyle=\footnotesize\tt\color{black!75},
+  identifierstyle=\bfseries\color{black},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red!50!black},
+  keywordstyle=\color{blue!75!black}}
+
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
