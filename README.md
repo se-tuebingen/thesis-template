@@ -10,7 +10,7 @@ This repository includes a template for your thesis.
 4. Fill in the blanks in `metadata.tex`.
 5. Read through the example code, then erase it.
 6. Write your thesis.
-7. Remove the `todos.tex` file before submitting, making sure to not leave any $${\color{red}}$$ text in the thesis.
+7. Remove the `todos.tex` file before submitting, making sure to not leave any $${\color{red}\textrm{red}}$$ text in the thesis.
 8. Submit and defend the thesis!
 
 ### Installing LaTeX
