@@ -54,15 +54,16 @@
     let,true,false,val,var,if,else,while,type,effect,interface,%
     try,with,case,do,fun,match,def,module,import,export,extern,%
     include,record,box,unbox,return,region,resource,%
-    new,and,is,namespace,pure},
+    new,and,is,namespace,private},
   otherkeywords={=>},
   alsoletter={?,!},
   sensitive=true,
   morecomment=[l]{//},
   morecomment=[n]{/*}{*/},
+  morestring=[s]{"""}{"""},
   morestring=[b]",
   morestring=[b]',
-  morestring=[b]"""
+  morestring=[s]{<"}{">}
 }[keywords,comments,strings]
 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
