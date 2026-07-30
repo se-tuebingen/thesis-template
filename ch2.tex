@@ -2,7 +2,7 @@
 
 After the reader gained sufficient knowledge to understand your problem in \cref{chap:refs}, you can jump to your own advanced material and conclusions.
 
-You will need definitions (see \cref{defn:x} below in \cref{sec:demo}), theorems (\cref{thm:y}), general mathematics, algorithms (\cref{alg:w}), and tables (\cref{tab:z})\todo{See documentation of package \texttt{booktabs} for hints on typesetting tables. As a main rule, \emph{never} draw a vertical line.}. \Cref{fig:f,fig:g} show how to make a nice figure. See \cref{fig:schema} for an example of TikZ-based diagram, \cref{lst:break} for an example of a code listing, and \cref{fig:typerule} for an example of a natural-deduction style judgment for typing rules.
+You will need definitions (see \cref{defn:x} below in \cref{sec:demo}), theorems (\cref{thm:y}), general mathematics, algorithms (\cref{alg:w}), and tables (\cref{tab:z})\todo{See documentation of package \texttt{booktabs} for hints on typesetting tables. As a main rule, \emph{never} draw a vertical line.}. \Cref{fig:f,fig:g} show how to make a nice figure. See \cref{fig:schema} for an example of TikZ-based diagram, \cref{lst:break} for an example of a code listing, \cref{fig:syntax} for an example of an EBNF-like syntax definition, and \cref{fig:typerule} for an example of a natural-deduction style judgment for typing rules.
 
 Use the \verb|\cref| command to typeset a reference. Cross-referencing helps to keep the necessary parts of the narrative close --- use references to the previous chapter with theory wherever it seems that the reader could have forgotten the required context. Conversely, it is useful to add a few references to theoretical chapters that point to the sections which use the developed theory, giving the reader easy access to motivating application examples.
 
@@ -109,6 +109,22 @@ def someBoundary[T] { prog: => Unit / break[T] } =
 \end{listing}
 
 \begin{figure}
+  \[
+  \begin{array}{lrrll}
+    \text{Variable}   &  V & ::= & x~|~y~|~z~|~\cdots & \\[0.5mm]
+    \text{Expression} &  E & ::= & V                  & \smallparen{variable} \\
+                      &    &   | & \lambda V : T.\ E  & \smallparen{abstraction} \\
+                      &    &   | & E\ E               & \smallparen{application}
+    \\ \\
+    \text{Type}       &  T & ::= & \tau               & \smallparen{type variable} \\
+                      &    &   | & T \to T            & \smallparen{function type}
+  \end{array}
+  \]
+\caption{An example EBNF-like syntax description of the simply-typed lambda calculus (STLC).}
+\label{fig:syntax}
+\end{figure}
+
+\begin{figure}
   \begin{mathpar}
     \inferrule*[right=Var]
     {x : \tau \in \Gamma}
@@ -123,7 +139,7 @@ def someBoundary[T] { prog: => Unit / break[T] } =
      \Gamma \vdash e_2 : \tau_1}
     {\Gamma \vdash e_1\ e_2 : \tau_2}
   \end{mathpar}
-\caption{An example type rule rendered with the \texttt{mathpartir} package of STLC-style type checking.}
+\caption{An example type rule denoting STLC-style type checking, rendered with the \texttt{mathpartir} package.}
 \label{fig:typerule}
 \end{figure}
 
